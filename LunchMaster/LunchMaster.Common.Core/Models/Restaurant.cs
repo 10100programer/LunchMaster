@@ -12,5 +12,5 @@ public class Restaurant
     string Description { get; set; }
     decimal DrivingDistance { get; set; }
     byte RelativeCost { get; set; }
-    int[] UsersWhoBannedRestaurant { get; set; }a
+    int[] UsersWhoBannedRestaurant { get; set; }
 }
