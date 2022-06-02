@@ -1,0 +1,26 @@
+﻿@using SiteSettings;
+@inject IDialogService DialogService
+@page "/"
+<PageTitle>Index</PageTitle>
+@if(SiteSettings.IsDeveloperMode)
+{
+    <MudAlert Severity="Severity.Warning" Variant="Variant.Filled">This is currently in development features may change or dissapear without notice</MudAlert>
+}
+<MudText Typo="Typo.h3" GutterBottom="true">Hello, world!</MudText>
+<MudText Class="mb-8">Welcome to your new app, powered by MudBlazor!</MudText>
+
+<MudButton @onclick="OpenDialog" Variant="Variant.Filled" Color="Color.Primary">
+    Open Simple Dialog
+</MudButton>
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        OpenDialog();
+        await Task.Delay(1);
+    }
+    private void OpenDialog()
+    {
+		var options = new DialogOptions { CloseOnEscapeKey = true, DisableBackdropClick = true };
+        DialogService.Show<Dialog>("Warning!", options);
+    }
+}
