@@ -14,7 +14,10 @@ static public class SiteThemes
             BackgroundGrey = "#27272f",
             Surface = "#373740",
             TextPrimary = "#ffffffb3",
-            TextSecondary = "rgba(255,255,255, 0.50)"
+            TextSecondary = "rgba(255,255,255, 0.50)",
+            DrawerBackground = "#27272f",
+            DrawerText = "#ffffffb3",
+            DrawerIcon = "#ffffffb3"
         }
     };  //Dark Theme
 }

@@ -19,7 +19,9 @@
         get
         {
             SiteSettings.currentTheme = SiteSettings.DarkModeEnabled ? SiteThemes.DarkTheme : SiteThemes.LightTheme;
+            //StateHasChanged();
             return SiteSettings.DarkModeEnabled ? "Dark Mode Enabled" : "Dark Mode Disabled";
+            
         }
     }
 }
