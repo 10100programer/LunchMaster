@@ -1,6 +1,7 @@
-﻿@inherits LayoutComponentBase
+﻿@using SiteSettings;
+@inherits LayoutComponentBase
 
-<MudThemeProvider />
+<MudThemeProvider Theme="SiteSettings.currentTheme"/>
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -13,13 +14,17 @@
         </MudBadge>
         <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Link="https://github.com/10100programer/LunchMaster" Target="_blank" />
     </MudAppBar>
-    <MudDrawer @bind-Open="_drawerOpen" Elevation="1">
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="1" Variant="@DrawerVariant.Mini" OpenMiniOnHover="true">
         <MudDrawerHeader>
-            <MudText Typo="Typo.h6">LunchMaster.Web.BlazorClient</MudText>
+            <MudIcon Icon="@Icons.Rounded.NextPlan" Class="app-drawer-icon"/>
         </MudDrawerHeader>
         <NavMenu />
     </MudDrawer>
     <MudMainContent>
+        @if(SiteSettings.IsDeveloperMode)
+        {
+            <MudAlert Severity="Severity.Warning" Variant="Variant.Filled">This is currently in development features may change or dissapear without notice</MudAlert>
+        }
         <MudContainer MaxWidth="MaxWidth.Large" Class="my-4 pt-4">
             @Body
         </MudContainer>

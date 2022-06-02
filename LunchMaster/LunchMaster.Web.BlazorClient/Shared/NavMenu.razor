@@ -1,5 +1,25 @@
-﻿<MudNavMenu>
-    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
-    <MudNavLink Href="counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Counter</MudNavLink>
-    <MudNavLink Href="fetchdata" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Fetch data</MudNavLink>
+﻿@using SiteSettings;
+@using LunchMaster.Web.BlazorClient.Themes;
+
+<MudNavMenu>
+    <MudNavGroup Title="Links" Icon=@Icons.Material.Filled.Map>
+        <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
+        <MudNavLink Href="restaurants" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Restaurant">Restaurants</MudNavLink>
+        <MudNavLink Href="counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Counter</MudNavLink>
+        <MudNavLink Href="fetchdata" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Fetch data</MudNavLink>
+    </MudNavGroup>
+    <MudNavGroup Lab Icon=@Icons.Material.Filled.Settings Title="Settings">
+        <MudSwitch @bind-Checked="@SiteSettings.DarkModeEnabled" Label="@darkModeLabel" Color="Color.Success" Class="pa-4"/>
+    </MudNavGroup>
 </MudNavMenu>
+
+@code{
+    public string darkModeLabel
+    {
+        get
+        {
+            SiteSettings.currentTheme = SiteSettings.DarkModeEnabled ? SiteThemes.DarkTheme : SiteThemes.LightTheme;
+            return SiteSettings.DarkModeEnabled ? "Dark Mode Enabled" : "Dark Mode Disabled";
+        }
+    }
+}
